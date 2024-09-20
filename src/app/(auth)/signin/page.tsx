@@ -1,8 +1,8 @@
 import React from 'react'
 
-function page() {
+const page = () => {
   return (
-    <div>page</div>
+    <div>Sigin Page</div>
   )
 }
 
