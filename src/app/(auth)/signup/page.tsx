@@ -26,8 +26,8 @@ const page = () => {
   const { toast } = useToast();
   const router = useRouter();
 
+  
   // zod impolementation
-
   const form = useForm<z.infer<typeof signUpSchema>>({
     resolver: zodResolver(signUpSchema),
     defaultValues: {
