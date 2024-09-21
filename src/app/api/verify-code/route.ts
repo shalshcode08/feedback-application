@@ -15,7 +15,7 @@ export async function POST(request : Request) {
                 message : "user not found",
                 success:false
             },
-            {status:500}
+            {status:404}
         )}
 
         const isCodeValid = user.verifyCode === code
