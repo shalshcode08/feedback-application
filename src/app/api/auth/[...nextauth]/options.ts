@@ -8,7 +8,7 @@ export const authOptions : NextAuthOptions = {
     providers:[
         CredentialsProvider({
             id: "credentials",
-            name: "Credentials",
+            name: "credentials",
             credentials : {
                 email: { label: "Email", type: "text "},
                 password: { label: "Password", type: "password" },
@@ -20,14 +20,14 @@ export const authOptions : NextAuthOptions = {
                     const user = await UserModel.findOne({
                         $or : [
                             {email : credentials.identifier},
-                            {username : credentials.identifier}  
+                            {username : credentials.password}  
                         ]
                     })
                     if(!user) {
                         throw new Error("No user found with this email")
     
                     }
-                    if(user.isVerified){
+                    if(!user.isVerified){
                         throw new Error("Please verify your account before loggin")
                     }
                     const isPasswordCorrect = await bcrypt.compare(credentials.password, user.password);

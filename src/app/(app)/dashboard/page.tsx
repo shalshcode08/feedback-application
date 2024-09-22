@@ -64,7 +64,7 @@ const page = () => {
     setIsStwitchLoading(false)
     try {
       const response = await axios.get<ApiResponse>('/api/get-messages')
-      setMessages(response.data.messages || [])
+      setMessages(response.data.message || [])
       if(refresh){
         toast({
           title : "Refreshed Messages",
@@ -117,7 +117,7 @@ const page = () => {
     }
   }
 
-  const { username } = session?.user as User;
+  const {username}  = (session?.user || {}) as User;
 
   const baseUrl = `${window.location.protocol}//${window.location.host}`;
   const profileUrl = `${baseUrl}/u/${username}`;
@@ -185,7 +185,7 @@ const page = () => {
           messages.map((message, index) => (
             <MessageCard
               key={message._id as string}
-              message={message}
+              messages={message}
               onMessageDelete={handleDeleteMessage}
             />
           ))

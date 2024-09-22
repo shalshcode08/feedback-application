@@ -30,7 +30,7 @@ export async function POST (request : Request) {
         return Response.json({
             success : true,
             message : "message sent successfully"
-        },{status : 403})
+        },{status : 200})
     } 
     catch (error) {
         console.log("error adding messages", error)
